@@ -22,7 +22,7 @@ services:
     environment:
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_SCHEDULE=0 0 4 * * *
-      - TZ=Australia/Perth
+      - TZ=Europe/London
 
   # --- Home Assistant - Smart Home Hub ---
   homeassistant:
@@ -31,7 +31,7 @@ services:
     restart: unless-stopped
     network_mode: host
     environment:
-      - TZ=Australia/Perth
+      - TZ=Europe/London
     volumes:
       - homeassistant_config:/config
     privileged: true
@@ -57,7 +57,7 @@ services:
     ports:
       - "5678:5678"
     environment:
-      - TZ=Australia/Perth
+      - TZ=Europe/London
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=admin
       - N8N_BASIC_AUTH_PASSWORD=changeme
@@ -76,7 +76,7 @@ services:
       - "53:53/udp"
       - "8053:80"
     environment:
-      - TZ=Australia/Perth
+      - TZ=Europe/London
       - WEBPASSWORD=changeme
     volumes:
       - pihole_data:/etc/pihole
@@ -93,7 +93,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      - TZ=Australia/Perth
+      - TZ=Europe/London
       - WEBSOCKET_ENABLED=true
     volumes:
       - vaultwarden_data:/data
@@ -159,7 +159,7 @@ services:
     volumes:
       - ollama_data:/root/.ollama
     environment:
-      - TZ=Australia/Perth
+      - TZ=Europe/London
 
   # --- Open WebUI - Chat Interface for Ollama ---
   open-webui:
@@ -170,7 +170,7 @@ services:
       - "3000:8080"
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
-      - TZ=Australia/Perth
+      - TZ=Europe/London
     volumes:
       - open_webui_data:/app/backend/data
     depends_on:
@@ -189,7 +189,6 @@ services:
     environment:
       - HOMEPAGE_ALLOWED_HOSTS=*
       - TZ=Europe/London
-      - HOMEPAGE_ALLOWED_HOSTS=homelab.local:3005,YOUR_PI_IP:3005
 
 volumes:
   portainer_data:
