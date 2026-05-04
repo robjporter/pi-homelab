@@ -70,6 +70,7 @@ sudo tee /etc/docker/daemon.json > /dev/null <<EOF
 EOF
 sudo systemctl restart docker
 sleep 3
+sudo usermod -aG docker $USER
 
 echo -e "${GREEN}Docker installed successfully${NC}"
 
@@ -81,7 +82,7 @@ echo -e "\n${YELLOW}[3/9] Installing Tailscale...${NC}"
 curl -fsSL https://tailscale.com/install.sh | sh
 echo -e "${GREEN}Tailscale installed.${NC}"
 echo -e "${YELLOW}Opening Tailscale authentication — copy the URL below into your browser:${NC}"
-sudo tailscale up
+sudo tailscale up --login-server hs.mecloud.uk
 
 # =============================================================
 # STEP 4 — INSTALL NETDATA
