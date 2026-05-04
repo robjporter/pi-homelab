@@ -83,7 +83,9 @@ echo -e "\n${YELLOW}[3/9] Installing Tailscale...${NC}"
 curl -fsSL https://tailscale.com/install.sh | sh
 echo -e "${GREEN}Tailscale installed.${NC}"
 echo -e "${YELLOW}Opening Tailscale authentication — copy the URL below into your browser:${NC}"
-sudo tailscale up --force-reauth --login-server hs.mecloud.uk
+sudo tailscale down
+sudo tailscale logout
+sudo tailscale login --login-server https://hs.mecloud.uk
 
 # =============================================================
 # STEP 4 — INSTALL NETDATA
