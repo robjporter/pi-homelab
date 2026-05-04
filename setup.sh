@@ -71,6 +71,7 @@ EOF
 sudo systemctl restart docker
 sleep 3
 sudo usermod -aG docker $USER
+newgrp docker
 
 echo -e "${GREEN}Docker installed successfully${NC}"
 
